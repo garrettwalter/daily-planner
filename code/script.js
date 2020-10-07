@@ -12,6 +12,103 @@ $(document).ready(function(){
             timeBlock.html($("<p>" + time + "</p>"));
         }
 
+        function checkHour (){
+           console.log(moment().format('H'));
+           var currentHour = moment().format('H');
+
+           if (currentHour === 9){
+            $("#userText0").addClass("present");
+            $("#userText1").addClass("future");
+            $("#userText2").addClass("future");
+            $("#userText3").addClass("future");
+            $("#userText4").addClass("future");
+            $("#userText5").addClass("future");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 10)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("present");
+            $("#userText2").addClass("future");
+            $("#userText3").addClass("future");
+            $("#userText4").addClass("future");
+            $("#userText5").addClass("future");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 11)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("present");
+            $("#userText3").addClass("future");
+            $("#userText4").addClass("future");
+            $("#userText5").addClass("future");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 12)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("present");
+            $("#userText4").addClass("future");
+            $("#userText5").addClass("future");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour == 13)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("past");
+            $("#userText4").addClass("present");
+            $("#userText5").addClass("future");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 14)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("past");
+            $("#userText4").addClass("past");
+            $("#userText5").addClass("present");
+            $("#userText6").addClass("future");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 15)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("past");
+            $("#userText4").addClass("past");
+            $("#userText5").addClass("past");
+            $("#userText6").addClass("present");
+            $("#userText7").addClass("future");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 16)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("past");
+            $("#userText4").addClass("past");
+            $("#userText5").addClass("past");
+            $("#userText6").addClass("past");
+            $("#userText7").addClass("present");
+            $("#userText8").addClass("future");
+           } else if (currentHour === 17)  {
+            $("#userText0").addClass("past");
+            $("#userText1").addClass("past");
+            $("#userText2").addClass("past");
+            $("#userText3").addClass("past");
+            $("#userText4").addClass("past");
+            $("#userText5").addClass("past");
+            $("#userText6").addClass("past");
+            $("#userText7").addClass("past");
+            $("#userText8").addClass("present");
+           }
+        }
+
         function renderHour (){
             for (i=0;i<hourOfDay.length;i++){
                 
@@ -61,6 +158,8 @@ $(document).ready(function(){
          },1000);
 
         renderHour();
+
+        checkHour();
     // EVENT LISTENERS
        
         $("#saveBtn0").on("click", function(){
