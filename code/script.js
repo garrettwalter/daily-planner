@@ -1,17 +1,17 @@
 $(document).ready(function(){
-    console.log("Hello World");
 
     // DOM VARS
-
         var dayBlock = $("#day");
         var hourBlock = $("#hour");
-        var timeBlock = $("#timeBlock");
-        var textBlock = $("#textBlock");
-        var lockBlock = $("#lockBlock");
+        var timeBlock = $("#currentDay");
     // JS VARS
-
         var hourOfDay = ["9","10","11","12","1","2","3","4","5"]
     // FUNCTION DEFINITIONS
+        function renderTime (){
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            timeBlock.html($("<p>" + time + "</p>"));
+        }
+
         function renderHour (){
             for (i=0;i<hourOfDay.length;i++){
                 
@@ -24,13 +24,15 @@ $(document).ready(function(){
                 timeDiv.addClass("col-sm-1");
                 timeDiv.addClass("time-block");
                 hourRow.append(timeDiv);
-                console.log(hourOfDay[i]);
 
                 var textDiv = $("<div>");
                 textDiv.addClass("col-sm-10");
                 hourRow.append(textDiv);
 
                 var userText = $("<input>");
+                var lockedText = localStorage.getItem("userAddedText"+[i]);
+                userText.val(lockedText);
+                userText.attr("id","userText"+[i]);
                 userText.addClass("hour");
                 userText.addClass("userText");
                 textDiv.append(userText);
@@ -40,6 +42,7 @@ $(document).ready(function(){
                 hourRow.append(btnDiv);
 
                 var saveBtn = $("<button>");
+                saveBtn.attr("id","saveBtn"+[i]);
                 saveBtn.addClass("saveBtn");
                 btnDiv.append(saveBtn);
 
@@ -52,7 +55,61 @@ $(document).ready(function(){
         }
 
     // FUNCTION CALLS
+        renderTime();
+        setInterval(function(){
+            renderTime();
+         },1000);
+
         renderHour();
     // EVENT LISTENERS
+       
+        $("#saveBtn0").on("click", function(){
+            var text9 = $("#userText0").val();
+            console.log(text9);
+            localStorage.setItem("userAddedText0", text9);
+        })
+        $("#saveBtn1").on("click", function(){
+            var text10 = $("#userText1").val();
+            console.log(text10);
+            localStorage.setItem("userAddedText1", text10);
+        })
+        $("#saveBtn2").on("click", function(){
+            var text11 = $("#userText2").val();
+            console.log(text11);
+            localStorage.setItem("userAddedText2", text11);
+        })
+        $("#saveBtn3").on("click", function(){
+            var text12 = $("#userText3").val();
+            console.log(text12);
+            localStorage.setItem("userAddedText3", text12);
+        })
+        $("#saveBtn4").on("click", function(){
+            var text1 = $("#userText4").val();
+            console.log(text1);
+            localStorage.setItem("userAddedText4", text1);
+        })
+        $("#saveBtn5").on("click", function(){
+            var text2 = $("#userText5").val();
+            console.log(text2);
+            localStorage.setItem("userAddedText5", text2);
+        })
+        $("#saveBtn6").on("click", function(){
+            var text3 = $("#userText6").val();
+            console.log(text3);
+            localStorage.setItem("userAddedText6", text3);
+        })
+        $("#saveBtn7").on("click", function(){
+            var text4 = $("#userText7").val();
+            console.log(text4);
+            localStorage.setItem("userAddedText7", text4);
+        })
+        $("#saveBtn8").on("click", function(){
+            var text5 = $("#userText8").val();
+            console.log(text5);
+            localStorage.setItem("userAddedText8", text5);
+        })
+
+       
+        
 
 }) 
