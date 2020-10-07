@@ -7,15 +7,15 @@ $(document).ready(function(){
     // JS VARS
         var hourOfDay = ["9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM"]
     // FUNCTION DEFINITIONS
+        // Puts the current Month, Day and Time of day into the Jumbotron
         function renderTime (){
             var time = moment().format('MMMM Do YYYY, h:mm:ss a');
             timeBlock.html($("<p>" + time + "</p>"));
         }
-
+        // Checks the current hour of the day and adds classes accordingly
         function checkHour (){
            console.log(moment().format('H'));
            var currentHour = moment().format('H');
-
            if (currentHour === 9){
             $("#userText0").addClass("present");
             $("#userText1").addClass("future");
@@ -108,24 +108,24 @@ $(document).ready(function(){
             $("#userText8").addClass("present");
            }
         }
-
+        // Creates the content of the page
         function renderHour (){
             for (i=0;i<hourOfDay.length;i++){
-                
+                // Creates new row for each time the for loop runs
                 var hourRow = $("<div>");
                 hourRow.addClass("row");
                 hourRow.addClass("hour");
                 hourBlock.append(hourRow);
-
+                // Puts an hour 9-5 in each of the rows, giving it a time
                 var timeDiv = $("<div>" + hourOfDay[i] + "</div>");
                 timeDiv.addClass("col-sm-1");
                 timeDiv.addClass("time-block");
                 hourRow.append(timeDiv);
-
+                // Div for the text box
                 var textDiv = $("<div>");
                 textDiv.addClass("col-sm-10");
                 hourRow.append(textDiv);
-
+                // Makes the box into an input that the user can type into
                 var userText = $("<input>");
                 var lockedText = localStorage.getItem("userAddedText"+[i]);
                 userText.val(lockedText);
@@ -133,35 +133,35 @@ $(document).ready(function(){
                 userText.addClass("hour");
                 userText.addClass("userText");
                 textDiv.append(userText);
-
+                // Div for the lock btn
                 var btnDiv = $("<div>");
                 textDiv.addClass("col-sm-1");
                 hourRow.append(btnDiv);
-
+                // The btn itself
                 var saveBtn = $("<button>");
                 saveBtn.attr("id","saveBtn"+[i]);
                 saveBtn.addClass("saveBtn");
                 btnDiv.append(saveBtn);
-
+                // Adds lock img to the button
                 var lockImg = $("<image>");
                 lockImg.prepend('<img id="lockImg" src="https://img.pngio.com/security-lock-icon-transparent-png-svg-vector-lock-icon-png-512_512.png" />');
                 saveBtn.append(lockImg);
-
             }
-
         }
 
     // FUNCTION CALLS
+        // Updates the time in the jumbotron by the second 
         renderTime();
         setInterval(function(){
             renderTime();
          },1000);
-
+        // renders the content
         renderHour();
-
+        //  checks for time of day
         checkHour();
     // EVENT LISTENERS
-       
+        //  When any of the buttons below are clicked 
+        //  the users inputted text for that hour is saved to local storage 
         $("#saveBtn0").on("click", function(){
             var text9 = $("#userText0").val();
             console.log(text9);
@@ -207,8 +207,4 @@ $(document).ready(function(){
             console.log(text5);
             localStorage.setItem("userAddedText8", text5);
         })
-
-       
-        
-
 }) 
