@@ -5,7 +5,7 @@ $(document).ready(function(){
         var hourBlock = $("#hour");
         var timeBlock = $("#currentDay");
     // JS VARS
-        var hourOfDay = ["9","10","11","12","1","2","3","4","5"]
+        var hourOfDay = ["9 AM","10 AM","11 AM","12 PM","1 PM","2 PM","3 PM","4 PM","5 PM"]
     // FUNCTION DEFINITIONS
         function renderTime (){
             var time = moment().format('MMMM Do YYYY, h:mm:ss a');
